@@ -1,0 +1,18 @@
+<div class='row'>
+    
+<div class='col-1'>
+    testing 123
+</div>
+<div class="col-10">
+    <p class="navbar-text float-right">
+    <% if user_signed_in? %>
+    Logged in as <strong><%= current_user.email %></strong>.
+    <%= link_to "Edit profile", edit_user_registration_path, class: "navbar-link" %> |
+    <%= link_to "Logout", destroy_user_session_path, data: { "turbo-method": :delete }, class: "navbar-link"  %>
+    <% else %>
+    <%= link_to "Sign up", new_user_registration_path, class: "navbar-link"  %> |
+    <%= link_to "Login", new_user_session_path, class: "navbar-link"  %>
+    <% end %>
+    </p>
+</div>
+</div>

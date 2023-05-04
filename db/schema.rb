@@ -10,8 +10,45 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 0) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_04_184624) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "animals", force: :cascade do |t|
+    t.string "animal_type"
+    t.integer "hourly_cost"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sitting_requests", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "pet_name"
+    t.bigint "animal_id", null: false
+    t.datetime "drop_off"
+    t.datetime "pickup"
+    t.integer "request_status"
+    t.integer "cost"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["animal_id"], name: "index_sitting_requests_on_animal_id"
+    t.index ["user_id"], name: "index_sitting_requests_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.string "first_name"
+    t.string "last_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  add_foreign_key "sitting_requests", "animals"
+  add_foreign_key "sitting_requests", "users"
 end

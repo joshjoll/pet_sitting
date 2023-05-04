@@ -1,0 +1,49 @@
+<%= form_with(model: sitting_request) do |form| %>
+  <% if sitting_request.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(sitting_request.errors.count, "error") %> prohibited this sitting_request from being saved:</h2>
+
+      <ul>
+        <% sitting_request.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%# TODO: Hide me, user doesn't need this %>  
+  <div>
+    <%= form.label :user_id, style: "display: block" %>
+    <%= form.text_field :user_id, value: current_user.id %>
+  </div>
+
+  <div>
+    <%= form.label :pet_name, style: "display: block" %>
+    <%= form.text_field :pet_name %>
+  </div>
+
+  <div>
+    <%= form.label :animal_id, style: "display: block" %>
+    <%= form.select :animal_id, @animals, include_blank: true %>
+  </div>
+
+  <div>
+    <%= form.label :drop_off, style: "display: block" %>
+    <%= form.datetime_field :drop_off %>
+  </div>
+
+  <div>
+    <%= form.label :pickup, style: "display: block" %>
+    <%= form.datetime_field :pickup %>
+  </div>
+
+  <%# TODO: Move this to a confirmation page to avoid having to do JS calculations here %>
+  <div>
+    <%= form.label :cost, style: "display: block" %>
+    <%= form.number_field :cost,  readonly: true%>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

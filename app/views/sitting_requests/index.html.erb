@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Sitting requests</h1>
+
+<div id="sitting_requests">
+  <% @sitting_requests.each do |sitting_request| %>
+    <%= render sitting_request %>
+    <p>
+      <%= link_to "Show this sitting request", sitting_request %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New sitting request", new_sitting_request_path %>

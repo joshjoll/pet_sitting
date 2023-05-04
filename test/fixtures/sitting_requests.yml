@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  pet_name: MyString
+  animal: one
+  drop_off: 2023-05-04 11:53:37
+  pickup: 2023-05-04 11:53:37
+  request_status: 1
+  cost: 1
+
+two:
+  user: two
+  pet_name: MyString
+  animal: two
+  drop_off: 2023-05-04 11:53:37
+  pickup: 2023-05-04 11:53:37
+  request_status: 1
+  cost: 1
