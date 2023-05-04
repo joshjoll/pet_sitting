@@ -4,10 +4,13 @@
 
 <div id="sitting_requests">
   <% @sitting_requests.each do |sitting_request| %>
-    <%= render sitting_request %>
-    <p>
-      <%= link_to "Show this sitting request", sitting_request %>
-    </p>
+    <div class='row'>
+      
+      <%= render sitting_request %>
+      <div class="col">
+        <%= link_to "Show this sitting request", sitting_request %>
+      </div>
+    </div>
   <% end %>
 </div>
 

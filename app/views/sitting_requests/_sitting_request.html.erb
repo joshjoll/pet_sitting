@@ -1,37 +1,48 @@
-<div id="<%= dom_id sitting_request %>">
+<div class="col">
   <p>
     <strong>User:</strong>
-    <%= sitting_request.user_id %>
+    <%= sitting_request.user.full_name %>
   </p>
+</div>
 
+<div class="col">
   <p>
     <strong>Pet name:</strong>
     <%= sitting_request.pet_name %>
   </p>
+</div>
 
+<div class="col">
   <p>
     <strong>Animal:</strong>
     <%= sitting_request.animal_id %>
   </p>
+</div>
 
+<div class="col">
   <p>
     <strong>Drop off:</strong>
     <%= sitting_request.drop_off %>
   </p>
+</div>
 
+<div class="col">
   <p>
     <strong>Pickup:</strong>
     <%= sitting_request.pickup %>
   </p>
+</div>
 
+<div class="col">
   <p>
     <strong>Request status:</strong>
     <%= sitting_request.request_status %>
   </p>
+</div>
 
+<div class="col">
   <p>
     <strong>Cost:</strong>
     <%= sitting_request.cost %>
   </p>
-
 </div>
