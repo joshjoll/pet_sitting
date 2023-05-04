@@ -4,8 +4,16 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  before_create :set_user_type
+
   enum user_type: {
     'customer': 1,
     'employee': 2
   }
+
+
+private
+  def set_user_type
+    self.user_type = 'customer'
+  end
 end
