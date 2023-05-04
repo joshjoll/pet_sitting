@@ -1,0 +1,19 @@
+<div class='container'>
+    
+    <div class='row'>
+        Please confirm your request below
+    </div>
+
+    <div class="row border">
+        <%= render partial: "sitting_requests/sitting_request", locals: {sitting_request: @sitting_request} %>
+    </div>
+
+    <div class='row'>
+        <div class='col'>
+            <%= button_to 'Confirm Request', confirmed_sitting_request_path(@sitting_request) %>
+        </div>
+        <div class='col'>
+            <%= button_to 'Make Changes', edit_sitting_request_path(@sitting_request), method: :get %>
+        </div>
+    </div>
+</div>

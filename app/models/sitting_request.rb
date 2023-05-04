@@ -10,13 +10,14 @@ class SittingRequest < ApplicationRecord
   validates_associated :animal
   validate :sitting_times
 
-  before_create :set_request_status
+  before_create :set_request_status_to_pending_confirmation
 
   enum request_status: {
-    'pending': 1,
-    'accepted': 2,
-    'rejected': 3,
-    'cancelled': 4
+    'pending confirmation': 1,
+    'pending acceptance': 2,
+    'accepted': 3,
+    'rejected': 4,
+    'cancelled': 5
   }
 
   # adding this method because I'm consistently typing both ways
@@ -25,7 +26,7 @@ class SittingRequest < ApplicationRecord
   end
 
 private
-  def set_request_status
+  def set_request_status_to_pending_confirmation
     self.request_status = 1
   end
 

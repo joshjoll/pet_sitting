@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  resources :sitting_requests
+  resources :sitting_requests do
+    member do
+      get 'confirmation'
+      post 'confirmed'
+    end
+  end
   resources :animals
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   

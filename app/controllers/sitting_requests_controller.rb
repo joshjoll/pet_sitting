@@ -1,5 +1,5 @@
 class SittingRequestsController < ApplicationController
-  before_action :set_sitting_request, only: %i[ show edit update destroy ]
+  before_action :set_sitting_request, only: %i[ show edit update destroy confirmation confirmed ]
   before_action :set_available_animals, only: %i[new create edit update]
   before_action :get_sitting_requests, only: %i[index]
 
@@ -27,26 +27,35 @@ class SittingRequestsController < ApplicationController
 
     respond_to do |format|
       if @sitting_request.save
-        format.html { redirect_to sitting_request_url(@sitting_request), notice: "Sitting request was successfully created." }
-        format.json { render :show, status: :created, location: @sitting_request }
+        format.html { redirect_to confirmation_sitting_request_path(@sitting_request)}
+        format.json { redirect_to confirmation_sitting_request_path(@sitting_request) }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @sitting_request.errors, status: :unprocessable_entity }
       end
     end
   end
-
+  
   # PATCH/PUT /sitting_requests/1 or /sitting_requests/1.json
   def update
     respond_to do |format|
       if @sitting_request.update(sitting_request_params)
-        format.html { redirect_to sitting_request_url(@sitting_request), notice: "Sitting request was successfully updated." }
-        format.json { render :show, status: :ok, location: @sitting_request }
+        format.html { redirect_to confirmation_sitting_request_path(@sitting_request)}
+        format.json { redirect_to confirmation_sitting_request_path(@sitting_request) }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @sitting_request.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def confirmation
+  end
+
+  def confirmed
+    # move me to a model
+    @sitting_request.update(request_status: 'pending acceptance')
+    redirect_to sitting_requests_path
   end
 
   # DELETE /sitting_requests/1 or /sitting_requests/1.json
