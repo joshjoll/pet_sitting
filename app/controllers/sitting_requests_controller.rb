@@ -1,10 +1,10 @@
 class SittingRequestsController < ApplicationController
   before_action :set_sitting_request, only: %i[ show edit update destroy ]
   before_action :set_available_animals, only: %i[new create edit update]
+  before_action :get_sitting_requests, only: %i[index]
 
   # GET /sitting_requests or /sitting_requests.json
   def index
-    @sitting_requests = SittingRequest.all
   end
 
   # GET /sitting_requests/1 or /sitting_requests/1.json
@@ -67,6 +67,14 @@ class SittingRequestsController < ApplicationController
 
     def set_available_animals
       @animals = Animal.all.map{|animal| [animal.animal_type, animal.id]}
+    end
+
+    def get_sitting_requests
+      if current_user.employee?
+        @sitting_requests = SittingRequest.all.order(:drop_off)
+      else
+        @sitting_requests = SittingRequest.where(user_id: current_user.id).order(:drop_off)
+      end
     end
 
     # Only allow a list of trusted parameters through.

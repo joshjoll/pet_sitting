@@ -1,7 +1,7 @@
 <%= form_with(model: sitting_request) do |form| %>
   <% if sitting_request.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(sitting_request.errors.count, "error") %> prohibited this sitting_request from being saved:</h2>
+      <h2><%= pluralize(sitting_request.errors.count, "error") %> prohibited this request from being saved:</h2>
 
       <ul>
         <% sitting_request.errors.each do |error| %>
