@@ -31,6 +31,10 @@ private
 
   def sitting_times
     return unless self.pickup.present? & self.drop_off.present?
+    if self.drop_off < DateTime.now
+      #TODO: Don't allow drop offs....within X hours?
+      self.errors.add("Drop Off", " must be a date in the future")
+    end
     if self.pickup < self.drop_off
       self.errors.add("Pickup", " must be after dropoff")
     end
