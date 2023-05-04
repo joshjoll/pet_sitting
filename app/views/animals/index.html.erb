@@ -4,10 +4,12 @@
 
 <div id="animals">
   <% @animals.each do |animal| %>
-    <%= render animal %>
-    <p>
-      <%= link_to "Show this animal", animal %>
-    </p>
+    <div class="row">
+
+      <%= render animal %>
+      <div class='col-2'>
+        <%= link_to "Show this animal", animal %>
+      </div>
   <% end %>
 </div>
 
