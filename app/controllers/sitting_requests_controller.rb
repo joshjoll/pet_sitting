@@ -24,9 +24,11 @@ class SittingRequestsController < ApplicationController
   # POST /sitting_requests or /sitting_requests.json
   def create
     @sitting_request = SittingRequest.new(sitting_request_params)
-
     respond_to do |format|
       if @sitting_request.save
+        # update record costs
+        @sitting_request.update(cost: CostCalculator.call(@sitting_request))
+
         format.html { redirect_to confirmation_sitting_request_path(@sitting_request)}
         format.json { redirect_to confirmation_sitting_request_path(@sitting_request) }
       else
@@ -40,6 +42,9 @@ class SittingRequestsController < ApplicationController
   def update
     respond_to do |format|
       if @sitting_request.update(sitting_request_params)
+        # update record costs
+        @sitting_request.update(cost: CostCalculator.call(@sitting_request))
+
         format.html { redirect_to confirmation_sitting_request_path(@sitting_request)}
         format.json { redirect_to confirmation_sitting_request_path(@sitting_request) }
       else
