@@ -1,17 +1,18 @@
-class CostCalculator
-
+class CostCalculator < ApplicationService
+    attr_accessor :total_cost
     def initialize(sitting_request)
       @sitting_request = sitting_request
+      @total_cost
     end
 
-    def calculate
+    def call
         base_cost = 20
-        total_cost = base_cost + (hourly_rate * get_total_hours)
+        base_cost + (get_hourly_rate * get_total_hours)
     end
 
 private
     def get_hourly_rate
-        hourly_rate = @sitting_request.animal.hourly_cost
+        @sitting_request.animal.hourly_cost
     end
 
     def get_total_hours
