@@ -37,13 +37,7 @@
     <%= form.datetime_field :pickup %>
   </div>
 
-  <%# TODO: Move this to a confirmation page to avoid having to do JS calculations here %>
-  <div>
-    <%= form.label :cost, style: "display: block" %>
-    <%= form.number_field :cost,  readonly: true%>
-  </div>
-
-  <div>
+  <div class="mt-3">
     <%= form.submit %>
   </div>
 <% end %>
