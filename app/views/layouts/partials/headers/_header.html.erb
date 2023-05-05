@@ -1,0 +1,21 @@
+<nav class="navbar bg-dark">
+    <div class='row container-fluid'>
+        <div class='col'>
+            <div class='row'>
+                <div class='col-auto'>
+                    <%= link_to "Home", home_path, class: "btn btn-light" %>
+                </div>
+
+                <% if user_signed_in? %>
+                    <% if current_user.employee?%>
+                            <%= render partial: "layouts/partials/headers/employee_header" %>
+                    <% else %>
+                            <%= render partial: "layouts/partials/headers/customer_header" %>
+                    <% end %>
+                <% end %>
+            </div>
+        </div>
+
+        <%= render partial: "layouts/partials/headers/login_header" %>
+    </div>
+</nav>

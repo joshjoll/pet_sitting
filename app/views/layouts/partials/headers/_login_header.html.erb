@@ -1,0 +1,23 @@
+<% if user_signed_in? %>
+    <div class="col-4 ml-auto">
+        <div class='row'>
+            <div class='col-4 ms-auto'>
+                <%= link_to "Edit profile", edit_user_registration_path, class: "btn btn-light" %>
+            </div>
+            <div class='col-3 me-0'>
+                <%= link_to "Logout", destroy_user_session_path, data: { "turbo-method": :delete }, class: "btn btn-light"  %>
+            </div>
+        </div>
+    </div>
+<% else %>
+    <div class='col-4 ml-auto'>
+        <div class='row'>
+            <div class='col-4 ms-auto '>
+                <%= link_to "Sign up", new_user_registration_path, class: "btn btn-light"  %>  <br>
+            </div>
+            <div class='col-3 me-0 '>
+                <%= link_to "Login", new_user_session_path, class: "btn btn-light"  %>
+            </div>
+        </div>
+    </div>
+<% end %>
