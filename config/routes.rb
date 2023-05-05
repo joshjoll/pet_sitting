@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     member do
       get 'confirmation'
       post 'confirmed'
+      post 'change_status'
     end
   end
   resources :animals

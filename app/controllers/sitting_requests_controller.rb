@@ -1,5 +1,5 @@
 class SittingRequestsController < ApplicationController
-  before_action :set_sitting_request, only: %i[ show edit update destroy confirmation confirmed ]
+  before_action :set_sitting_request, only: %i[ show edit update destroy confirmation confirmed change_status]
   before_action :set_available_animals, only: %i[new create edit update]
   before_action :get_sitting_requests, only: %i[index]
 
@@ -71,6 +71,12 @@ class SittingRequestsController < ApplicationController
       format.html { redirect_to sitting_requests_url, notice: "Sitting request was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def change_status
+    @sitting_request.update(request_status: params[:new_status])
+    flash[:alert] = "Your update has been made"
+    render :show
   end
 
   private
