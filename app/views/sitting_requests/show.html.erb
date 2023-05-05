@@ -1,10 +1,36 @@
-<p style="color: green"><%= notice %></p>
 
-<%= render @sitting_request %>
+<div class='container'>
+  <div class='row'>
+    <div class='col-auto my-3'>
+      <%= link_to "Back to sitting requests", sitting_requests_path, class:"btn btn-dark" %>
+    </div>
+  </div>
 
-<div>
-  <%= link_to "Edit this sitting request", edit_sitting_request_path(@sitting_request) %> |
-  <%= link_to "Back to sitting requests", sitting_requests_path %>
+  <%= render @sitting_request %>
 
-  <%= button_to "Destroy this sitting request", @sitting_request, method: :delete %>
+  <div class="row">
+
+    <div class='col-auto my-auto'>
+      <%= link_to "Edit", edit_sitting_request_path(@sitting_request), class:"btn btn-dark" %>
+    </div>
+    
+    <% if current_user.employee? %>
+      <div class='col-auto'>
+        <%= form_for @sitting_request, :url => change_status_sitting_request_path, :method => :post do |form| %>
+            <div>
+              <%= form.label "Update Status", style: "display: block", class: 'mb-1' %>
+              <%= form.select :request_status, @request_statuses.keys, selected: @sitting_request.request_status %>
+            </div>
+            <%= form.submit :class => 'btn btn-dark mt-2' %>
+        <% end %>
+      </div>
+    <% else %>
+
+      <div class='col-auto '>
+        <%= button_to "Cancel", change_status_sitting_request_path(@sitting_request, sitting_request: {request_status: 'cancelled'}), method: :post, class:"btn btn-dark" %>
+      </div>
+
+    <% end %>
+  </div>
+  
 </div>

@@ -9,6 +9,7 @@ class SittingRequestsController < ApplicationController
 
   # GET /sitting_requests/1 or /sitting_requests/1.json
   def show
+    @request_statuses = SittingRequest.request_statuses
   end
 
   # GET /sitting_requests/new
@@ -74,9 +75,9 @@ class SittingRequestsController < ApplicationController
   end
 
   def change_status
-    @sitting_request.update(request_status: params[:new_status])
-    flash[:alert] = "Your update has been made"
-    render :show
+    @sitting_request.update(request_status: sitting_request_params['request_status'])
+    flash[:notice] = "The status of your request has been changed"
+    redirect_to @sitting_request
   end
 
   private
