@@ -12,19 +12,22 @@ users = [
         email: "employee@employee.com",
         first_name: "Perfect",
         last_name: "Employee",
-        password: "password"
+        password: "password",
+        user_type: 2
     },
     {
         email: "good_customer@customer.com",
         first_name: "Pretty Good",
         last_name: "Customer",
-        password: "password"
+        password: "password",
+        user_type: 1
     },
     {
         email: "bad_customer@customer.com",
         first_name: "Less Good",
         last_name: "Customer",
-        password: "password"
+        password: "password",
+        user_type: 1
     }
 ]
 
