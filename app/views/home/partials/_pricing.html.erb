@@ -1,0 +1,26 @@
+<div class='row text-center'>
+    <h4>Pricing</h4>
+    <p>All sittings come with a $20 base charge, with an additional rate per hour. We round up to the next full hour</p>
+</div>
+<div class='row'>
+    <div class='col border'>
+        <div class='row border text-center'>
+            <div class='col border'>
+                <strong>Animal Type</strong>
+            </div>
+            <div class='col border'>
+                <strong>Price per hour</strong>
+            </div>
+        </div>
+        <% @animals.each do |animal| %>
+            <div class='row border text-center'>
+                <div class='col border'>
+                    <%= animal.animal_type%>
+                </div>
+                <div class='col border'>
+                    <%= animal.hourly_cost%>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>

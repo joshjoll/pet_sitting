@@ -1,1 +1,23 @@
-Welcome to Doggos
+<div class='container'>
+    <div class='row text-center'>
+        <h2> Welcome to Petters, where we promise to pet, love, and watch your loved ones. </h2>
+    </div>
+    <div class='row'>
+        <div class='col'>
+            <div class='row'>
+                <h4> About Us</h4>
+            </div>
+            <div class='row'>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+            </div>
+        </div>
+        <div class='col'>
+            <%= render partial: "home/partials/pricing" %>
+        </div>
+    </div>
+    <div class='row'>
+        <div class='col'>
+            <%= link_to 'Request our Services', new_sitting_request_path, class: 'btn btn-primary' %>
+        </div>
+    </div>
+</div>
