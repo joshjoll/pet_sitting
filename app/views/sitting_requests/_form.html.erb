@@ -11,8 +11,8 @@
     </div>
   <% end %>
 
-  <%# TODO: Hide me, user doesn't need this %>  
-  <div>
+  <p> Customer: <%= current_user.full_name %></p>
+  <div hidden>
     <%= form.label :user_id, style: "display: block" %>
     <%= form.text_field :user_id, value: current_user.id %>
   </div>
