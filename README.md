@@ -63,3 +63,15 @@ The general workflow is:
 
 Cost calculations are managed by the `CostCalculator` service class. This class is called from the SittingRequest controller on the #create and #update actions. It accepts a SittingRequest object returns the total cost. The hourly rates are pulled from the Animal table in the database, and the `base_cost` is hard coded at $20.
 
+## Testing
+This app uses the following technologies for testing:
+
+    - Rspec 3.12.0
+    - Rspec-rails 6.0.2
+    - Factorybot
+    - Capybara
+
+Test coverage includes
+
+    - Unit tests for the models and the CostCalculator
+    - Feature tests for the Sitting Request From
