@@ -6,6 +6,6 @@ FactoryBot.define do
     drop_off { "2023-05-13 10:51:00" }
     pet_name { "Doggo" }
     request_status { 'pending confirmation' }
-    cost {100}
+    cost {80}
   end
 end
