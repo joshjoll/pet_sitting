@@ -31,7 +31,7 @@ Navigate to the directory in the terminal, then run:
 
 At this point, the app should be ready to run and can be started using:
 
-    rails db:create db:migrate db:seed
+    rails s
 
 ## Use
 This app is a basic pet sitting scheduling app. It consists of three models:
@@ -50,16 +50,15 @@ The general workflow is:
 
 1. A user creates an account from the landing page
 
-- Note: the seed file will create 1 employee and 2 customer user accounts. There is no user management functionality that would allow a new account to be made into an employee account.
+- Note: the seed file will create 1 employee and 2 customer user accounts. There is no UI user management functionality that would allow a new account to be made into an employee account.
 
 > Seeded data can be found in the `db/seeds.rb` file
 
 2. A customer clicks the `Request our Services` button from the landing page, and is taken to the Sitting Request form
-3. After filling out the form (all fields are required and validated on the backend), the user is taken to a confirmation page.
-4. After submission and validation of data, the user is taken to the Sitting Request#confirmation view. At this point, the request is in a `pending confirmation` status, and the customer is shown the total cost for their request.
-5. Once the user clicks the `Confirm Request` button, the order is moved to a `pending acceptance` status; At this point a User account with an `employee` `user_type` can view the all Requests from the Sitting Request#index view.
-6. The employee then should either mark the request as either `accepted` or `rejected` from the Sitting Request#show view.
-7. The customer has a button on their Sitting Request#show view that will allow them to move the `request_status` to `cancelled`.
+3. After filling out the form (all fields are required and validated on the backend), the user is taken to the SittingRequest#confirmation view. At this point, the request is in a `pending confirmation` status, and the customer is shown the total cost for their request.
+4. Once the user clicks the `Confirm Request` button, the order is moved to a `pending acceptance` status; At this point a User account with an `employee` `user_type` can view the all Requests from the Sitting Request#index view.
+5. The employee then should either mark the request as either `accepted` or `rejected` from the SittingRequest#show view.
+6. The customer has a button on their Sitting Request#show view that will allow them to move the `request_status` to `cancelled`.
 
 Cost calculations are managed by the `CostCalculator` service class. This class is called from the SittingRequest controller on the #create and #update actions. It accepts a SittingRequest object returns the total cost. The hourly rates are pulled from the Animal table in the database, and the `base_cost` is hard coded at $20.
 
