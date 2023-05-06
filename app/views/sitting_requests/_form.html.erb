@@ -14,7 +14,7 @@
   <p> Customer: <%= current_user.full_name %></p>
   <div hidden>
     <%= form.label :user_id, style: "display: block" %>
-    <%= form.text_field :user_id, value: current_user.id %>
+    <%= form.text_field :user_id, value: current_user.id, id: 'hidden_user_id' %>
   </div>
 
   <div>
