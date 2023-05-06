@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :sitting_request do
-    user 
-    animal 
+    association :user 
+    association :animal 
     pickup { "2023-05-13 16:50:00" }
     drop_off { "2023-05-13 10:51:00" }
     pet_name { "Doggo" }
